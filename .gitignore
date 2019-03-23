@@ -1,0 +1,7 @@
+/target
+/.nrepl-port
+/out
+.idea/
+.shadow-cljs/
+node_modules/
+resources/public/js/cljs-runtime/

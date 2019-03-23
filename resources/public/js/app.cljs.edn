@@ -1,0 +1,3 @@
+{:require  [cv.app]
+ :init-fns [cv.app/init]
+ :compiler-options {:asset-path "js/app.out"}}

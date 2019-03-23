@@ -1,0 +1,34 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src"]
+
+ :dependencies [[org.clojure/clojurescript "1.10.339"]
+                [org.clojure/core.async "0.4.490"]
+                [reagent "0.8.1"]
+                [com.andrewmcveigh/cljs-time "0.5.2"]
+                [metosin/reitit "0.2.13"]
+                [com.rpl/specter "1.1.3-SNAPSHOT"] ;; shared?
+                [com.taoensso/timbre "4.10.0"] ;; Logging
+                ;:exclusions [com.google.guava/guava org.clojure/clojure cljsjs/react]
+                [datascript "0.16.7"]
+                ;[binaryage/devtools "0.9.4" :scope "test"]
+                ;[binaryage/dirac "1.2.9" :scope "test"]
+                [cljs-http "0.1.45"] ;; do we need this?
+                [com.taoensso/timbre "4.10.0"]]
+
+ :builds
+ {:app {
+        ;:output-dir    "resources/public/js"
+        ;:http-resource-root "resources/public"
+        :npm-deps      true
+        ;:output-dir    "target/debug/js" ;; todo debug vs release
+        :output-dir    "resources/public/js" ;; todo debug vs release
+        :asset-path    "/js"
+        :infer-externs :auto
+        ;                        :http-root  "target/public"
+        :target        :browser
+        :modules       {:app {:entries [cv.app]}}
+        :devtools      {:after-load cv.app/mount!
+                        :http-root  "resources/public"
+                        :http-port  3013}
+        :release       {:output-dir "./target/release/js"}}}}
