@@ -5,6 +5,8 @@
             [cljs-time.core :as t]
             [cljs-time.format :as tf]))
 
+(def font "Computer Modern Serif, serif")
+
 (enable-console-print!)
 
 (defn deep-merge [v & vs]
@@ -182,7 +184,7 @@
 
 (defn format-interval [interval]
   [:span {:style {
-                  :font-family "CMU Serif Bold"
+                  :font-family font
                   :font-style  "bold"}}
    (if (t/interval? interval)
      (let [start (t/start interval)
@@ -368,7 +370,7 @@
 ; specify height, calculate min/max, then minus margins
 
 (defn label [& body]
-  (into [:strong {:style {:font-family "CMU Serif Bold"}}] body))
+  (into [:strong {:style {:font-family font}}] body))
 
 (defn contact-section [{:as contact :keys [phone email github stackoverflow twitter]}]
   [:div
@@ -431,7 +433,7 @@
 
 (defn parent-component []
   [:div
-   {:style {:font-family         "CMU Serif"
+   {:style {:font-family         font
             :max-width "1170px"
             ;:min-height "12000px"
             :margin "0 auto"
@@ -447,7 +449,8 @@
       }}
     a { color: gold;}
     a:visited { color: orange; }
-    p {margin: 0.62em 0; }
+    h1, h2, h3, h4 { font-weight: normal; }
+    p {margin: 0.62em 0; line-height: 1.31em; font-size: 1.15em; }
     @media print { .hideprint { display: none; } }"]
 
             ;:background-position "top right"}}
